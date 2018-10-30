@@ -1,0 +1,25 @@
+import java.util.Deque;
+import java.util.ArrayDeque;
+import java.util.Iterator;
+
+public class TestDeque{
+    public static void main(String[] args){
+        
+        Deque<String> obj = new ArrayDeque<String>();
+        
+        obj.add("A");
+        obj.add("B");
+        obj.add("C");
+        
+        Iterator itr = obj.iterator();
+        
+        while(itr.hasNext()){
+            System.out.println("Items:" + itr.next());
+        }
+    }
+}
+
+//ArrayDeque class implements the Deque interface. It facilitates us to use the Deque. 
+Unlike queue, we can add or delete the elements from both the ends.
+
+ArrayDeque is faster than ArrayList and Stack and has no capacity restrictions.
