@@ -1,0 +1,31 @@
+import java.util.*;
+import java.util.Iterator;
+
+public class TestPriorityQueue{
+    public static void main(String[] args){
+        
+        Queue<String> obj = new PriorityQueue<String>();
+        
+        obj.add("A");//adding elements
+        obj.add("B");
+        obj.add("C");
+        
+        System.out.println("Head:" + obj.element());//head
+        System.out.println("Head:" + obj.peek());//head
+        
+        System.out.println("Iterating items...");
+        
+        Iterator itr = obj.iterator();
+        
+            while(itr.hasNext()){
+            System.out.println("Elemets:" + itr.next());
+            }
+            
+        obj.remove();//Removing...
+        obj.poll();
+        System.out.println("After Removing...");
+        
+        while(itr.hasNext()){
+            System.out.println("Elements:" + itr.next());
+        }
+        }
