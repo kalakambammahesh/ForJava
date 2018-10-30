@@ -1,0 +1,28 @@
+
+import java.util.LinkedHashSet;
+import java.util.Set;
+import java.util.Iterator;
+
+public class TestLinkedHashSet{
+    public static void main(String[] args){
+        
+        Set<String> obj = new LinkedHashSet<String>();
+        
+        obj.add(" ");
+        obj.add("A");
+        obj.add("B");
+        obj.add(" ");
+        
+        Iterator itr = obj.iterator();
+        
+        while(itr.hasNext()){
+            System.out.println("Items:" + itr.next());
+        }
+    }
+}
+
+
+//LinkedHashSet class represents the LinkedList implementation of Set Interface.
+It extends the HashSet class and implements Set interface.
+Like HashSet, It also contains unique elements. It maintains the insertion order and permits null elements.
+
