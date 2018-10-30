@@ -1,0 +1,19 @@
+import java.util.*;
+
+public class TestList{
+    public static void main(String[] args){
+        
+        ArrayList<String> obj = new ArrayList();
+        
+        obj.add("Mahesh");
+        obj.add("is");
+        obj.add("A");
+        obj.add("MAn");
+        
+        Iterator itr = obj.iterator();
+        
+        while(itr.hasNext()){
+            System.out.println("Elements:" + itr.next());
+        }
+    }
+}
