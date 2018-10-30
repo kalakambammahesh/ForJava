@@ -1,0 +1,22 @@
+import java.util.Vector;
+import java.util.Iterator;
+
+public class TestVector{
+    public static void main(String[] args){
+        
+        Vector<String> obj = new Vector<String>();
+        
+        obj.add("A");
+        obj.add("B");
+        obj.add("C");
+        
+        Iterator<String> itr = obj.iterator();
+        
+        while(itr.hasNext()){
+            System.out.println("Elements " + itr.next());
+        }
+    }
+}
+
+Vector uses a dynamic array to store the data elements. It is similar to ArrayList.
+However, It is synchronized and contains many methods that are not the part of Collection framework.
