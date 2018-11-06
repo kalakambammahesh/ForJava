@@ -1,0 +1,124 @@
+//Question.java
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+class Question{
+    private int id;
+    private String name;
+    private Map<Answer, User> answers;
+    
+    //setters and getter
+    
+    public void display(){
+        System.out.println("id"+id+" name"+name);
+        Set<Answer, User> set = answers.entrySet();
+        Iterator itr = set.iterator();
+        
+        while(itr.hasNext()){
+            Entry<Answer,User> entry = itr.next();
+            System.out.println("Ans:"+entry.getKey());
+            System.out.println("User:"+entry.getValue());
+        }
+    }
+}
+
+//anser.java
+
+class Answer{
+    private int id;
+    private String answer;
+    private String postedDate;
+    
+    public Answer(){}
+    public Answer(int id, String answer, String postedDate){
+        this.id = id;
+        this.answer = answer;
+        this.postedDate = postedDate;
+    }
+    public String toString(){
+        return id+" "+answer+" "+postedDate;
+    }
+}
+
+///user.java
+class User{
+    private int id;
+    private String name, email;
+    
+    public User(){}
+    public User(int id, String email, String name){
+        this.id = id;
+        this.email = email;
+        this.name = name;
+    }
+    public String toString(){
+        return id+" "+email+" "+name;
+    }
+}
+
+//applicationContext.xml
+
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans   
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"> 
+
+
+<bean id='answer1' class="Answer">
+<property name="id" value="11"></property>
+<property name="answer" value="PL"></property>
+<property name="postedDate" value="10-10-10"></property>
+
+</bean>
+<bean id='answer2' class="Answer">
+<property name="id" value="12"></property>
+<property name="answer" value="Independent"></property>
+<property name="postedDate" value="10-19-10"></property>
+</bean>
+
+<bean id="user1" class="User">
+<property name="id" value="21"></property>
+<property name="name" value="Arun"></property>
+<property name="email" value="arun@gmail.com"></property>
+</bean>
+<bean id="user2" class="User">
+<property name="id" value="22"></property>
+<property name="name" value="Vijay"></property>
+<property name="email" value="vijay@gmail.com"></property>
+</bean>
+
+<bean id="QuestionBean" class="Question">
+<property name="id" value="1"></property>
+<property name="name" value="What is Java?"></property>
+<property name="answers">
+<map>
+<entry key-ref="answer1" key-value="user1"></entry>
+<entry key-ref="answer2" key-value="user2"></entry>
+</map>
+
+
+</property>
+
+</bean>
+</beans>
+
+
+//Test.java
+
+public class Test{
+    public static void main(String[] args){
+        Resource resource = new ClassPathResource("applicationContex.xml");
+        BeanFactory factory = new XmlBeanFactory(resource);
+        Question q = (Question)factory.get("QuestionBean");
+        q.display();
+        
+    }
+    
+}
+
+
+
