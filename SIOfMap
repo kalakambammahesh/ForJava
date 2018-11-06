@@ -1,0 +1,60 @@
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Iterator;
+import java.util.Set;
+
+
+class Question{
+    private String id;
+    private String name;
+    private String Map<String, String> answers;
+    
+    //setters and getter
+    public void display(){
+        System.out.println("id:"+id+"name"+name);
+        System.out.println("Answers..");
+        
+        Set<String, String> set = answers.entrySet();
+        Iterator itr = set.iterator();
+        while(itr.hasNext()){
+           Entry<String, String> entry =  itr.next();
+           System.out.println("Key:"+entry.getKey()+"Value:"+entry.getValue());
+        }
+    }
+}
+
+//applicationContext.xml
+
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans   
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"> 
+
+<bean id="QuestionBean" class="Question">
+<property name="id" value="1"></property>
+<property name="name" value="What is Java?"></property>
+<property name="answers">
+<map>
+<entry key="Programming Language" value="Arun"></entry>
+<entry key="Independent Language" value="Vihay"></entry>
+</map>
+</property>
+</bean>
+
+</beans>
+
+
+//Test.java
+
+public class Test{
+    public static void main(String[] args){
+        Resource resource = new ClassPathResource("applicationContet.xml");
+        BeanFactory factory = new XmlBeanFactory(resource);
+        
+        Question obj = (Question)factory.getBean("QuestionBean");
+        obj.display();
+    }
+}
