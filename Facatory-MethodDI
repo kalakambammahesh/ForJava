@@ -1,0 +1,37 @@
+
+//Static factoory method of same calls
+class A{
+    private static final A obj = new A();
+    private A(){
+        System.out.println("Private Constructor");
+    }
+    public static A getA(){
+        System.out.println("Factory Method");
+        return obj;
+    }
+    public void display(){
+        System.out.println("Nothign...");
+    }
+}
+
+//applicationContext.xml
+
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans   
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"> 
+
+<bean id="a" clas="A" factory-method="getA"></bean>
+</beans>
+
+//Test.java
+public class Test {  
+public static void main(String[] args) {  
+    ApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");  
+    A a=(A)context.getBean("a");  
+    a.msg();  
+}  
+}  
