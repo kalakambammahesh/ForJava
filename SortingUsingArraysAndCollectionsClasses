@@ -1,0 +1,27 @@
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Test{
+    public static void main(String[] args){
+        int[] intArray = {1,3,2,5,4};
+        Arrays.sort(intArray);
+        System.out.println(Arrays.toString(intArray));
+        
+        String[] stringArray = {"A", "C", "B", "E", "D"};
+        Arrays.sort(stringArray);
+        System.out.println(Arrays.toString(stringArray));
+        
+        List<String> lst = new ArrayList<String>();
+        lst.add("B");
+        lst.add("A");
+        lst.add("D");
+        lst.add("C");
+        
+        Collections.sort(lst);
+        for(String str:lst){
+            System.out.println(str);
+        }
+    }
+}
