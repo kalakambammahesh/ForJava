@@ -1,0 +1,44 @@
+package com.pre;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+public class MapIteration {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Map<String, String> map = new HashMap<>();
+		map.put("mahesh", "mahesh");
+		map.put("mahesh", "mahesh");
+		map.put("mahesh3", "mahesh");
+		map.put("","1" );
+		map.put("","2" );
+		
+		//2. Iterating using keySet() and values() if you need only keys or values.
+		
+		for(String s : map.values()) {
+			System.out.println("Value :" + s);
+		}
+		
+		for(String s : map.keySet())
+			System.out.println("Key: " + s);
+	}
+		//3. Iterating through Map.Entry<k,v> with itrator. Can provide iterator.remove();
+		Iterator<Map.Entry<String, String>> itr = map.entrySet().iterator();
+		
+		while(itr.hasNext()) {
+			Map.Entry<String, String> entry = itr.next();
+			System.out.println(entry.getKey() + " " + entry.getValue());
+		}
+		//4.Iterating using lamda expression usign forEach(action) efficient
+		
+		map.forEach((k, v) -> System.out.println("key:" + k + "Value: " + v));
+		
+		//5.Iterating over key set map.keySet() and getting map value Map.get(value) slow and inefficient
+		for(String name : map.keySet()) {
+			System.out.println("Value : " + map.get(name));
+		}
+	}
+
+}
